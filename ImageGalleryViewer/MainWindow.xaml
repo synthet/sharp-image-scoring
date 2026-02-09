@@ -403,58 +403,221 @@
                             </Grid>
                             
                             <!-- Scores -->
-                            <TextBlock Text="Scores" Style="{StaticResource HeaderStyle}"/>
+                            <TextBlock Text="Model Scores" Style="{StaticResource HeaderStyle}"/>
                             
-                            <Grid Margin="0,0,0,8">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel>
-                                    <TextBlock Text="General" Style="{StaticResource LabelStyle}"/>
-                                    <TextBlock Text="{Binding ScoreGeneral, StringFormat=F2}" FontSize="24"
-                                               Foreground="{Binding ScoreGeneral, Converter={StaticResource ScoreToColor}}"/>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1">
-                                    <TextBlock Text="Aesthetic" Style="{StaticResource LabelStyle}"/>
-                                    <TextBlock Text="{Binding ScoreAesthetic, StringFormat=F2}" FontSize="24"
-                                               Foreground="{Binding ScoreAesthetic, Converter={StaticResource ScoreToColor}}"/>
-                                </StackPanel>
-                            </Grid>
+                            <!-- General Score -->
+                            <StackPanel Margin="0,0,0,12">
+                                <Grid Margin="0,0,0,4">
+                                    <TextBlock Text="GENERAL" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding ScoreGeneral, StringFormat={}{0:P0}}" HorizontalAlignment="Right" 
+                                               FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                </Grid>
+                                <ProgressBar Value="{Binding ScoreGeneral, Mode=OneWay}" Maximum="1" Height="4" 
+                                             Background="#333333" BorderThickness="0"
+                                             Foreground="{Binding ScoreGeneral, Converter={StaticResource ScoreToColor}}">
+                                    <ProgressBar.Style>
+                                        <Style TargetType="ProgressBar">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ProgressBar">
+                                                        <Grid x:Name="TemplateRoot">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Determinate"/>
+                                                                    <VisualState x:Name="Indeterminate"/>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Border Background="{TemplateBinding Background}" CornerRadius="2"/>
+                                                            <Border x:Name="PART_Track"/>
+                                                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" 
+                                                                    Background="{TemplateBinding Foreground}" CornerRadius="2"/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ProgressBar.Style>
+                                </ProgressBar>
+                            </StackPanel>
+
+                            <!-- Technical Score -->
+                            <StackPanel Margin="0,0,0,12">
+                                <Grid Margin="0,0,0,4">
+                                    <TextBlock Text="TECHNICAL" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding ScoreTechnical, StringFormat={}{0:P0}}" HorizontalAlignment="Right" 
+                                               FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                </Grid>
+                                <ProgressBar Value="{Binding ScoreTechnical, Mode=OneWay}" Maximum="1" Height="4" 
+                                             Background="#333333" BorderThickness="0"
+                                             Foreground="{Binding ScoreTechnical, Converter={StaticResource ScoreToColor}}">
+                                    <ProgressBar.Style>
+                                        <Style TargetType="ProgressBar">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ProgressBar">
+                                                        <Grid x:Name="TemplateRoot">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Determinate"/>
+                                                                    <VisualState x:Name="Indeterminate"/>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Border Background="{TemplateBinding Background}" CornerRadius="2"/>
+                                                            <Border x:Name="PART_Track"/>
+                                                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" 
+                                                                    Background="{TemplateBinding Foreground}" CornerRadius="2"/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ProgressBar.Style>
+                                </ProgressBar>
+                            </StackPanel>
+
+                            <!-- Aesthetic Score -->
+                            <StackPanel Margin="0,0,0,12">
+                                <Grid Margin="0,0,0,4">
+                                    <TextBlock Text="AESTHETIC" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding ScoreAesthetic, StringFormat={}{0:P0}}" HorizontalAlignment="Right" 
+                                               FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                </Grid>
+                                <ProgressBar Value="{Binding ScoreAesthetic, Mode=OneWay}" Maximum="1" Height="4" 
+                                             Background="#333333" BorderThickness="0"
+                                             Foreground="{Binding ScoreAesthetic, Converter={StaticResource ScoreToColor}}">
+                                    <ProgressBar.Style>
+                                        <Style TargetType="ProgressBar">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ProgressBar">
+                                                        <Grid x:Name="TemplateRoot">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Determinate"/>
+                                                                    <VisualState x:Name="Indeterminate"/>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Border Background="{TemplateBinding Background}" CornerRadius="2"/>
+                                                            <Border x:Name="PART_Track"/>
+                                                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" 
+                                                                    Background="{TemplateBinding Foreground}" CornerRadius="2"/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ProgressBar.Style>
+                                </ProgressBar>
+                            </StackPanel>
                             
-                            <Grid Margin="0,0,0,4">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Technical:" Style="{StaticResource LabelStyle}"/>
-                                <TextBlock Grid.Column="1" Text="{Binding ScoreTechnical, StringFormat=F2}" Style="{StaticResource ValueStyle}"/>
-                            </Grid>
-                            
-                            <Grid Margin="0,0,0,4">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="SPAQ:" Style="{StaticResource LabelStyle}"/>
-                                <TextBlock Grid.Column="1" Text="{Binding ScoreSpaq, StringFormat=F2}" Style="{StaticResource ValueStyle}"/>
-                            </Grid>
-                            <Grid Margin="0,0,0,4">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="AVA:" Style="{StaticResource LabelStyle}"/>
-                                <TextBlock Grid.Column="1" Text="{Binding ScoreAva, StringFormat=F2}" Style="{StaticResource ValueStyle}"/>
-                            </Grid>
-                            <Grid Margin="0,0,0,4">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="KonIQ:" Style="{StaticResource LabelStyle}"/>
-                                <TextBlock Grid.Column="1" Text="{Binding ScoreKoniq, StringFormat=F2}" Style="{StaticResource ValueStyle}"/>
-                            </Grid>
+                            <!-- Other Scores (conditionally visible) -->
+                            <!-- SPAQ -->
+                            <StackPanel Margin="0,0,0,12"
+                                        Visibility="{Binding ScoreSpaq, Converter={StaticResource NullToVisibility}}">
+                                <Grid Margin="0,0,0,4">
+                                    <TextBlock Text="SPAQ" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding ScoreSpaq, StringFormat={}{0:P0}}" HorizontalAlignment="Right" 
+                                               FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                </Grid>
+                                <ProgressBar Value="{Binding ScoreSpaq, Mode=OneWay}" Maximum="1" Height="4" 
+                                             Background="#333333" BorderThickness="0"
+                                             Foreground="{Binding ScoreSpaq, Converter={StaticResource ScoreToColor}}">
+                                    <ProgressBar.Style>
+                                        <Style TargetType="ProgressBar">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ProgressBar">
+                                                        <Grid x:Name="TemplateRoot">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Determinate"/>
+                                                                    <VisualState x:Name="Indeterminate"/>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Border Background="{TemplateBinding Background}" CornerRadius="2"/>
+                                                            <Border x:Name="PART_Track"/>
+                                                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" 
+                                                                    Background="{TemplateBinding Foreground}" CornerRadius="2"/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ProgressBar.Style>
+                                </ProgressBar>
+                            </StackPanel>
+
+                            <!-- AVA -->
+                            <StackPanel Margin="0,0,0,12"
+                                        Visibility="{Binding ScoreAva, Converter={StaticResource NullToVisibility}}">
+                                <Grid Margin="0,0,0,4">
+                                    <TextBlock Text="AVA" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding ScoreAva, StringFormat={}{0:P0}}" HorizontalAlignment="Right" 
+                                               FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                </Grid>
+                                <ProgressBar Value="{Binding ScoreAva, Mode=OneWay}" Maximum="1" Height="4" 
+                                             Background="#333333" BorderThickness="0"
+                                             Foreground="{Binding ScoreAva, Converter={StaticResource ScoreToColor}}">
+                                    <ProgressBar.Style>
+                                        <Style TargetType="ProgressBar">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ProgressBar">
+                                                        <Grid x:Name="TemplateRoot">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Determinate"/>
+                                                                    <VisualState x:Name="Indeterminate"/>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Border Background="{TemplateBinding Background}" CornerRadius="2"/>
+                                                            <Border x:Name="PART_Track"/>
+                                                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" 
+                                                                    Background="{TemplateBinding Foreground}" CornerRadius="2"/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ProgressBar.Style>
+                                </ProgressBar>
+                            </StackPanel>
+
+                            <!-- KonIQ -->
+                            <StackPanel Margin="0,0,0,12"
+                                        Visibility="{Binding ScoreKoniq, Converter={StaticResource NullToVisibility}}">
+                                <Grid Margin="0,0,0,4">
+                                    <TextBlock Text="KONIQ" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding ScoreKoniq, StringFormat={}{0:P0}}" HorizontalAlignment="Right" 
+                                               FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"/>
+                                </Grid>
+                                <ProgressBar Value="{Binding ScoreKoniq, Mode=OneWay}" Maximum="1" Height="4" 
+                                             Background="#333333" BorderThickness="0"
+                                             Foreground="{Binding ScoreKoniq, Converter={StaticResource ScoreToColor}}">
+                                    <ProgressBar.Style>
+                                        <Style TargetType="ProgressBar">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ProgressBar">
+                                                        <Grid x:Name="TemplateRoot">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Determinate"/>
+                                                                    <VisualState x:Name="Indeterminate"/>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Border Background="{TemplateBinding Background}" CornerRadius="2"/>
+                                                            <Border x:Name="PART_Track"/>
+                                                            <Border x:Name="PART_Indicator" HorizontalAlignment="Left" 
+                                                                    Background="{TemplateBinding Foreground}" CornerRadius="2"/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ProgressBar.Style>
+                                </ProgressBar>
+                            </StackPanel>
                             
                             <!-- Metadata -->
                             <TextBlock Text="Metadata" Style="{StaticResource HeaderStyle}"/>

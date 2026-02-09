@@ -49,11 +49,11 @@ public class ImageRecord
     public bool FileExists { get; set; }
     
     /// <summary>
-    /// Display score as formatted string
+    /// Display score as formatted percentage string
     /// </summary>
     public string ScoreDisplay => ScoreGeneral.HasValue 
-        ? $"{ScoreGeneral.Value:F2}" 
-        : "N/A";
+        ? $"{Math.Round(ScoreGeneral.Value * 100)}%" 
+        : "-";
     
     /// <summary>
     /// Display label with emoji indicator

@@ -67,7 +67,7 @@ On first run, configure the database path in:
 Example configuration:
 ```json
 {
-  "DatabasePath": "D:\\Projects\\image-scoring\\SCORING_HISTORY.FDB",
+  "DatabasePath": "D:\\path\\to\\image-scoring\\SCORING_HISTORY.FDB",
   "PageSize": 50,
   "ThumbnailCacheSizeMb": 200
 }
