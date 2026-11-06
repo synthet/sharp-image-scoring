@@ -11,7 +11,26 @@ public class ImageRecord
     public string FileType { get; set; } = string.Empty;
     
     // Scores
-    public double? ScoreGeneral { get; set; }
+    private double? _scoreGeneral;
+    public double? ScoreGeneral 
+    { 
+        get
+        {
+            // Return DB value if present and non-zero
+            if (_scoreGeneral.HasValue && _scoreGeneral.Value > 0) return _scoreGeneral;
+            
+            // Fallback calculation: 50% LIQE + 30% AVA + 20% SPAQ
+            if (ScoreLiqe.HasValue || ScoreAva.HasValue || ScoreSpaq.HasValue)
+            {
+                return (ScoreLiqe.GetValueOrDefault() * 0.5) + 
+                       (ScoreAva.GetValueOrDefault() * 0.3) + 
+                       (ScoreSpaq.GetValueOrDefault() * 0.2);
+            }
+            
+            return _scoreGeneral;
+        }
+        set => _scoreGeneral = value;
+    }
     public double? ScoreTechnical { get; set; }
     public double? ScoreAesthetic { get; set; }
     public double? ScoreSpaq { get; set; }

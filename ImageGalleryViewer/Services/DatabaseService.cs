@@ -46,6 +46,9 @@ public class DatabaseService : IDisposable
             "created_at" => "created_at",
             "score_technical" => "score_technical",
             "score_aesthetic" => "score_aesthetic",
+            "score_liqe" => "score_liqe",
+            "score_ava" => "score_ava",
+            "score_spaq" => "score_spaq",
             _ => "score_general"
         };
         var orderDir = filter.SortDescending ? "DESC" : "ASC";

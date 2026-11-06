@@ -127,7 +127,10 @@ public partial class MainViewModel : ObservableObject
         "🆔 ID", 
         "⭐ General Score",
         "🔧 Technical Score",
-        "🎨 Aesthetic Score"
+        "🎨 Aesthetic Score",
+        "📊 LIQE",
+        "🎭 AVA",
+        "👁️ SPAQ"
     };
     
     public static int[] PageSizeOptions => new[] { 25, 50, 100, 200 };
@@ -460,6 +463,9 @@ public partial class MainViewModel : ObservableObject
             2 => "score_general",
             3 => "score_technical",
             4 => "score_aesthetic",
+            5 => "score_liqe",
+            6 => "score_ava",
+            7 => "score_spaq",
             _ => "score_general"
         };
         
